@@ -36,6 +36,20 @@ Tehtäväkohdat pisteytetään lähtökohtaisesti samanarvoisina, eli jokaisesta
 saa yhden pisteen. Mikäli jossain kohdassa on korkeampi maksimipisteytys, se on
 merkitty tehtävän otsikon yhteyteen.
 
+Mikäli löydät itsesi umpikujasta, voit käyttää seuraavia komentoja palauttaaksesi
+itsesi aiempaan tilanteeseen. Huomioi, että komennot voivat yliajaa tekemiäsi muutoksia!
+* `git reset --soft [haara|commit-id]` – palauta haarasi tiettyyn kohtaan, jätä muutokset odottamaan commitia
+* `git reset --hard [haara|commit-id]` – sama kuin edellinen, mutta heitä tehdyt muutokset roskiin. MUUTOKSIA EI VOI PALAUTTAA.
+* `git checkout -- [tiedosto]` – poista tiedostoon tehdyt muutokset, joita ei ole vielä commitattu. MUUTOKSIA EI VOI PALAUTTAA.
+* `git rm --cached [tiedosto]` – peruuta tiedoston lisääminen gitin versionhallintaan, poistamatta alkuperäistä tiedostoa
+* `git rm [tiedosto]` – poista tiedosto gitin versionhallinnasta. TIEDOSTOA EI VOI PALAUTTAA.
+
+Mikäli repositorio menee aivan täysin jumiin, voit myös tarvittaessa kloonata sen
+uudelleen ja aloittaa alusta. Mikäli haluat kokeilla jotain potentiaalisesti
+vahingolista repositoriolle, voi tehdä sen joko täysin tuoreessa kloonissa tai
+omassa haarassaan. Ole kuitenkin huolellinen, ettet vahingossa poista jo tekemääsi
+työtä samalla.
+
 ## Tehtävien palauttaminen
 Tehtävien palautus koostuu seuraavista tiedostoista:
 * Lyhyt vapaamuotoinen raportti siitä, miten tehtävät suoritettiin. Voit kuvata esimerkiksi
@@ -78,7 +92,13 @@ Tämän jälkeen voit vaihtaa tässä vaiheessa takaisin päähaaraan.
 
 Kokeile liittää haara `feature/more-harj-edits` päähaaraan tehtävän 3 tavoin.
 Tämän pitäisi johtaa virheilmoitukseen, jonka näet tarkemmin komennolla
-`git status`. Ei tällä kertaa korjata ongelmaa liitoksen yhteydessä, vaan ajetaan
+`git status`. Mikäli avaat tiedostot tekstieditorissa, esim. VSCode,
+näet gitin lisäämät merkinnät siitä, missä haaran liittämisessä kohdatut
+ongelmat ovat. VSCode osaa myös korostaa tiedostot, joissa kulloinkin on
+kohdattu ongelmia. Nämä näkyvät punaisena tiedostolistauksessa, ja niiden
+tiedostonimen perässä on huutomerkki.
+
+Ei tällä kertaa korjata ongelmaa liitoksen yhteydessä, vaan ajetaan
 komento `git merge --abort` liitosprosessin perumiseksi. Tämän jälkeen siirrytään
 takaisin haaraan `feature/more-harj-edits`.
 
@@ -374,6 +394,9 @@ pipillä aiemmin luodusta `pyproject.toml`-tiedostosta, ja aja komento
 `tox`. Toxin pitäisi luoda tarvittavat testiympäristöt ja suorittaa
 testit automaattisesti.
 
+Testien läpimeno ei tässä vaiheessa ole olennaista, mutta voit halutessasi
+koittaa korjata testien näyttämät virheet.
+
 > Kehittäjäpaketit voidaan asentaa komennolla `pip install .[test]`
 
 Lisää `tox.ini`-tiedosto tämän jälkeen repositorioon, ja luo commit.
@@ -459,6 +482,10 @@ Mikäli teit muutokset käyttäen kehityshaaraa, älä unohda liittää kehitysh
 muutoksia takaisin päähaaraan.
 
 # Tehtävä 9 (2p) – pytestin lisääminen toxiin
+> Huomaa, että pre-commit estää nyt suorat muutokset päähaaraan.
+> Muutokset on nyt siis luotava uuden haaran kautta, ja liitettävä takaisin
+> päähaaraan.
+
 Viimeisenä tehtävänä lisätään pytestin ympäristö toxiin. Toxin asetuksiin voi hakea
 apua edellisen luennon esimerkeistä, ja muista toxin ympäristöistä. Lisää uusi
 testiympätistö testiympäristöjen listaan, ja kokeile onnistuuko testiympäristön
