@@ -27,7 +27,7 @@ esimerkiksi jotain graafista käyttöliittymää gitille, käytettävät komenno
 vaihdella. Pääsääntöisesti esimerkit annetaan gitin komentoriviversiolle.
 
 Repositorion kloonaamisen jälkeen avaa kloonattu repositorio VSCodessa, esimerkiksi
-valitsemalla kohta `Open Folder` ja navigoimalla kloonattuun kansioon.
+valitsemalla kohta `File -> Open Folder` ja navigoimalla kloonattuun kansioon.
 
 Suoritettavat muutokset tehdään omassa paikallisessa repositoriossa, eikä luotuja
 haaroja tarvitse siirtää GitHubiin.
